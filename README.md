@@ -67,10 +67,8 @@ SmartBankManagementSystem/
 
 * Create a MySQL database.
 * Update database credentials inside **Java config class** located at:
-
-```
 src/main/java/com.config/
-```
+
 Update values like:
 
 * JDBC URL
