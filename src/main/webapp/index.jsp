@@ -1,12 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Smart Bank</title>
 </head>
+
 <body>
-    <h1 align="center">Welcome to Smart Bank</h1>
-    <h2 align="center">
-    	<a href="${pageContext.request.contextPath}/customer/register" style="text-decoration:none" >Register</a><br><br>
-    <a href="${pageContext.request.contextPath}/customer/login" style="text-decoration:none">Login</a><br><br>
-    </h2>
+	<h1>Smart Bank Management System</h1>
+	<a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/register" >Register</a>
+	<a class="btn btn-ghost" href="${pageContext.request.contextPath}/customer/login">Login</a>
 </body>
 </html>
