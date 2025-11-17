@@ -5,20 +5,129 @@
 <head>
 <meta charset="UTF-8">
 <title>Personal Info</title>
+
+<style>
+/* ===== Body & Font ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* ===== Header ===== */
+h2 {
+    color: #004080;
+    margin-bottom: 20px;
+}
+
+/* ===== Home Link ===== */
+h3[align="right"] a {
+    color: #004080;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #004080;
+    transition: all 0.3s ease;
+}
+
+h3[align="right"] a:hover {
+    background-color: #004080;
+    color: white;
+}
+
+/* ===== Form Styling ===== */
+form {
+    display: flex;
+    justify-content: center;
+}
+
+form table {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+table td {
+    padding: 10px 5px;
+    vertical-align: middle;
+}
+
+/* ===== Input Fields ===== */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Disabled or readonly fields */
+input[readonly], select[disabled] {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* ===== Submit Button ===== */
+input[type="submit"] {
+    padding: 12px 25px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #00264d;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: 50px;
+}
+</style>
+
 </head>
 <body>
-	
-	<h2 align="center">Personal Info</h2>
-	<h3 align="right">
-	<a href="${pageContext.request.contextPath}/account/backtohome" style="text-decoration:none">Home</a>
-	</h3>
-	<form action="savepersonalinfo" method="post">
+
+<div class="container">
+    <h2>Personal Info</h2>
+    <h3 align="right">
+        <a href="${pageContext.request.contextPath}/account/backtohome">Home</a>
+    </h3>
+
+    <form action="savepersonalinfo" method="post">
         <table border="0" align="center">
-        		<tr>
-        		<td>Customer ID : </td>
-        		<td><input type="number" name="customerId" value="${customer.customerId}" readonly></td>
-        		</tr>
-        		
+            <tr>
+                <td>Customer ID :</td>
+                <td><input type="number" name="customerId" value="${customer.customerId}" readonly></td>
+            </tr>
             <tr>
                 <td>Name:</td>
                 <td><input type="text" name="name" value="${customer.name}" readonly></td>
@@ -62,7 +171,6 @@
                 <td>Registered At :</td>
                 <td><input type="text" name="registeredAt" value="${customer.registeredAt}" readonly></td>
             </tr>
-
             <tr>
                 <td colspan="2"><strong>Address</strong></td>
             </tr>
@@ -72,7 +180,7 @@
             </tr>
             <tr>
                 <td>Pincode:</td>
-                <td><input type="text" name="address.pincode" value="${customer.address.pincode}" ></td>
+                <td><input type="text" name="address.pincode" value="${customer.address.pincode}"></td>
             </tr>
             <tr>
                 <td>City:</td>
@@ -86,14 +194,17 @@
                 <td>Country:</td>
                 <td><input type="text" name="address.country" value="${customer.address.country}"></td>
             </tr>
-
             <tr>
                 <td></td>
-                <td>
-                    <input type="submit" value="save">
-                </td>
+                <td><input type="submit" value="Save"></td>
             </tr>
         </table>
     </form>
+</div>
+
+<footer>
+    &copy; 2025 Smart Bank. All rights reserved.
+</footer>
+
 </body>
 </html>
