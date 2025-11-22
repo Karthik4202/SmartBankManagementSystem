@@ -10,7 +10,7 @@ public class BankRepository {
 
 	public static final String GET_BY_ACCOUNTNUMBER = "select * from accounts where accountNumber= :accNum";
 	
-	public static final String GET_ALL_CUSTOMERS = "select * from customers";
+	public static final String GET_ALL_CUSTOMERS = "select * from customers where role='USER'";
 	
 	public static final String GET_ALL_ACCOUNTS = "select * from accounts";
 	

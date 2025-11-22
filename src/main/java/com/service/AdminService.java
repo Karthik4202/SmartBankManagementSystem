@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -37,7 +38,14 @@ public class AdminService {
 		Session session = getSession();
 		NativeQuery<Account> nativeQuery = session.createNativeQuery(BankRepository.GET_ALL_ACCOUNTS,Account.class);
 		List<Account> accounts = nativeQuery.list();
-		return accounts;
+		List<Account> userAccounts = new ArrayList<>();
+		
+		for(Account account : accounts) {
+			if(account.getCustomer().getRole().equals("USER")) {
+				userAccounts.add(account);
+			}
+		}
+		return userAccounts;
 	}
 	public List<Loan> getAllLoans() {
 		Session session = getSession();
@@ -49,6 +57,11 @@ public class AdminService {
 	public Loan updateStatus(String id, String status) {
 		Session session = getSession();
 		Loan loan = session.find(Loan.class, id);
+		String loanStatus = loan.getStatus();
+		if(status == null || status.isEmpty()) {
+			loan.setStatus(loanStatus);
+			return loan;
+		}
 		loan.setStatus(status);
 		return loan;
 		
@@ -57,6 +70,11 @@ public class AdminService {
 	public void updateAccStatus(String id, String status) {
 		Session session = getSession();
 		Account account = session.find(Account.class,id);
+		String accountStatus = account.getAccountStatus();
+		System.out.println(accountStatus);
+		if(status == null || status.isEmpty() || status.isBlank()) {
+			return;
+		}
 		account.setAccountStatus(status);
 	}
 	public void addAmount(String id, double balance) {

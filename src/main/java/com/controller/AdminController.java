@@ -77,12 +77,14 @@ public class AdminController {
 	
 	@GetMapping("/updatestatus")
 	public String reviewLoans(@RequestParam(name ="id") String id,@RequestParam(name="status") String status) {
+		System.out.println(status);
 		adminService.updateStatus(id,status);
 		return "redirect:/admin/reviewloans";
 	}
 	
 	@GetMapping("/updateaccstatus")
 	public String updateAccStatus(@RequestParam(name="id") String id,@RequestParam(name="status") String status) {
+		System.out.println("Acc Status : "+status.length());
 		adminService.updateAccStatus(id, status);
 		return "redirect:/admin/allaccounts";
 	}
